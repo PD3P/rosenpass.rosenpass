@@ -8,7 +8,7 @@ use thiserror::Error;
 use super::{CryptoServer, PeerPtr, SPk, SSk, SymKey};
 
 #[derive(Debug, Clone)]
-/// A pair of matching public/private ("secret") keys used to launch the crypto server.
+/// A pair of matching public/secret keys used to launch the crypto server.
 pub struct Keypair {
     pub sk: SSk,
     pub pk: SPk,
@@ -83,7 +83,10 @@ impl Build<CryptoServer> for BuildCryptoServer {
 }
 
 #[derive(Debug)]
-/// TODO
+/// Cryptographic key(s) identifying the connected [crate::protocol::Peer] - i.e., "client" -
+/// for a protocol session which is managed by the crypto server.
+/// Each peer must at least provide a [crate::protocol::SPk], but can optionally elect to share a [crate::protocol::SymKey] as well.
+/// For more information on the intended usage, see [crate::protocol::Peer::psk].
 pub struct PeerParams {
     pub psk: Option<SymKey>,
     pub pk: SPk,
