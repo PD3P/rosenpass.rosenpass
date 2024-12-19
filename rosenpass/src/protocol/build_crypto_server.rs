@@ -8,7 +8,7 @@ use thiserror::Error;
 use super::{CryptoServer, PeerPtr, SPk, SSk, SymKey};
 
 #[derive(Debug, Clone)]
-/// TODO
+/// A pair of matching public/private ("secret") keys used to launch the crypto server.
 pub struct Keypair {
     pub sk: SSk,
     pub pk: SPk,
