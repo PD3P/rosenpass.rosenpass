@@ -8,6 +8,7 @@ use thiserror::Error;
 use super::{CryptoServer, PeerPtr, SPk, SSk, SymKey};
 
 #[derive(Debug, Clone)]
+/// TODO
 pub struct Keypair {
     pub sk: SSk,
     pub pk: SPk,
@@ -19,18 +20,22 @@ impl Keypair {
         Self { sk, pk }
     }
 
+    /// TODO
     pub fn zero() -> Self {
         Self::new(SSk::zero(), SPk::zero())
     }
 
+    /// TODO
     pub fn random() -> Self {
         Self::new(SSk::random(), SPk::random())
     }
 
+    /// TODO
     pub fn from_parts(parts: (SSk, SPk)) -> Self {
         Self::new(parts.0, parts.1)
     }
 
+    /// TODO
     pub fn into_parts(self) -> (SSk, SPk) {
         (self.sk, self.pk)
     }
@@ -38,17 +43,21 @@ impl Keypair {
 
 #[derive(Error, Debug)]
 #[error("PSK already set in BuildCryptoServer")]
+/// Error indicating that the PSK is already set. Unused in the current version of the protocol.
 pub struct PskAlreadySet;
 
 #[derive(Error, Debug)]
 #[error("Keypair already set in BuildCryptoServer")]
+/// TODO
 pub struct KeypairAlreadySet;
 
 #[derive(Error, Debug)]
 #[error("Can not construct CryptoServer: Missing keypair")]
+/// TODO
 pub struct MissingKeypair;
 
 #[derive(Debug, Default)]
+/// TODO
 pub struct BuildCryptoServer {
     pub keypair: Option<Keypair>,
     pub peers: Vec<PeerParams>,
@@ -74,6 +83,7 @@ impl Build<CryptoServer> for BuildCryptoServer {
 }
 
 #[derive(Debug)]
+/// TODO
 pub struct PeerParams {
     pub psk: Option<SymKey>,
     pub pk: SPk,
