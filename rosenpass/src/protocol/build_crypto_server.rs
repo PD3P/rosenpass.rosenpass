@@ -88,7 +88,7 @@ impl Build<CryptoServer> for BuildCryptoServer {
 ///
 /// Each peer must be identified by a [public key (SPk)][crate::protocol::SPk].
 /// Optionally, a [symmetric key (SymKey)][crate::protocol::SymKey]
-/// may be used to set up a secure communication channel without
+/// may be provided when setting up the connection.
 ///
 /// For more information on the intended usage and additional considerations, see [Peer::psk][crate::protocol::Peer::psk] and [Peer::spkt][crate::protocol::Peer::spkt].
 pub struct PeerParams {
