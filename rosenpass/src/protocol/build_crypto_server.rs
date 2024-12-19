@@ -83,10 +83,14 @@ impl Build<CryptoServer> for BuildCryptoServer {
 }
 
 #[derive(Debug)]
-/// Cryptographic key(s) identifying the connected [crate::protocol::Peer] - i.e., "client" -
-/// for a protocol session which is managed by the crypto server.
-/// Each peer must at least provide a [crate::protocol::SPk], but can optionally elect to share a [crate::protocol::SymKey] as well.
-/// For more information on the intended usage, see [crate::protocol::Peer::psk].
+/// Cryptographic key(s) identifying the connected [peer][crate::protocol::Peer] ("client")
+/// for a given session that is being managed by the crypto server.
+///
+/// Each peer must be identified by a [public key (SPk)][crate::protocol::SPk].
+/// Optionally, a [symmetric key (SymKey)][crate::protocol::SymKey]
+/// may be used to set up a secure communication channel without
+///
+/// For more information on the intended usage and additional considerations, see [Peer::psk][crate::protocol::Peer::psk] and [Peer::spkt][crate::protocol::Peer::spkt].
 pub struct PeerParams {
     pub psk: Option<SymKey>,
     pub pk: SPk,
