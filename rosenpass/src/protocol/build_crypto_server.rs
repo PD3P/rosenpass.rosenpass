@@ -48,12 +48,12 @@ pub struct PskAlreadySet;
 
 #[derive(Error, Debug)]
 #[error("Keypair already set in BuildCryptoServer")]
-/// TODO
+/// Error type indicating that the public/secret key pair has already been set.
 pub struct KeypairAlreadySet;
 
 #[derive(Error, Debug)]
 #[error("Can not construct CryptoServer: Missing keypair")]
-/// TODO
+/// Error type indicating that no public/secret key pair has been provided.
 pub struct MissingKeypair;
 
 #[derive(Debug, Default)]
