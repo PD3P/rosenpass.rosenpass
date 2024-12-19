@@ -58,7 +58,8 @@ pub struct KeypairAlreadySet;
 pub struct MissingKeypair;
 
 #[derive(Debug, Default)]
-/// TODO
+/// Construction options for a [CryptoServer][crate::CryptoServer].
+/// TODO ConstructionSite, Builder, difference vs regular CryptoServer (instance)
 pub struct BuildCryptoServer {
     pub keypair: Option<Keypair>,
     pub peers: Vec<PeerParams>,
