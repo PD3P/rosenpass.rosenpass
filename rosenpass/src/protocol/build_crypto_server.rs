@@ -90,14 +90,17 @@ pub struct PeerParams {
 }
 
 impl BuildCryptoServer {
+    /// TODO
     pub fn new(keypair: Option<Keypair>, peers: Vec<PeerParams>) -> Self {
         Self { keypair, peers }
     }
 
+    /// TODO
     pub fn empty() -> Self {
         Self::new(None, Vec::new())
     }
 
+    /// TODO
     pub fn from_parts(parts: (Option<Keypair>, Vec<PeerParams>)) -> Self {
         Self {
             keypair: parts.0,
@@ -105,32 +108,38 @@ impl BuildCryptoServer {
         }
     }
 
+    /// TODO
     pub fn take_parts(&mut self) -> (Option<Keypair>, Vec<PeerParams>) {
         (self.keypair.take(), self.peers.swap_with_default())
     }
 
+    /// TODO
     pub fn into_parts(mut self) -> (Option<Keypair>, Vec<PeerParams>) {
         self.take_parts()
     }
 
+    /// TODO
     pub fn with_keypair(&mut self, keypair: Keypair) -> Result<&mut Self, KeypairAlreadySet> {
         ensure_or(self.keypair.is_none(), KeypairAlreadySet)?;
         self.keypair.insert(keypair).discard_result();
         Ok(self)
     }
 
+    /// TODO
     pub fn with_added_peer(&mut self, psk: Option<SymKey>, pk: SPk) -> &mut Self {
         // TODO: Check here already whether peer was already added
         self.peers.push(PeerParams { psk, pk });
         self
     }
 
+    /// TODO
     pub fn add_peer(&mut self, psk: Option<SymKey>, pk: SPk) -> PeerPtr {
         let id = PeerPtr(self.peers.len());
         self.with_added_peer(psk, pk);
         id
     }
 
+    /// TODO
     pub fn emancipate(&mut self) -> Self {
         Self::from_parts(self.take_parts())
     }
