@@ -43,7 +43,8 @@ impl Keypair {
 
 #[derive(Error, Debug)]
 #[error("PSK already set in BuildCryptoServer")]
-/// Error indicating that the PSK is already set. Unused in the current version of the protocol.
+/// Error indicating that the PSK is already set.
+/// Unused in the current version of the protocol.
 pub struct PskAlreadySet;
 
 #[derive(Error, Debug)]
