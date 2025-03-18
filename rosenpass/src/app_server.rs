@@ -1301,8 +1301,9 @@ impl AppServer {
             let mut stdout = stdout.lock();
             writeln!(
                 stdout,
-                "output-key peer {} key-file {of:?} {why}",
-                peerid.fmt_b64::<MAX_B64_PEER_ID_SIZE>()
+                "output-key peer {} key-file {of:?} {why}: {}",
+                peerid.fmt_b64::<MAX_B64_PEER_ID_SIZE>(),
+                key.secret().fmt_b64::<64>(),
             )?;
             stdout.flush()?;
         }

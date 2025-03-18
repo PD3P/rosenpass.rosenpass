@@ -1,0 +1,8 @@
+public_key = "/hermit-public-key"
+secret_key = "/hermit-secret-key"
+listen = ["0.0.0.0:9975"]
+verbosity = "Quiet"
+
+[[peers]]
+public_key = "/debian-public-key"
+key_out = "/hermit-key-out.txt"

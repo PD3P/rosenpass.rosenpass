@@ -56,7 +56,6 @@ clap_mangen = { workspace = true }
 mio = { workspace = true }
 rand = { workspace = true }
 zerocopy = { workspace = true }
-home = { workspace = true }
 derive_builder = { workspace = true }
 rosenpass-wireguard-broker = { workspace = true }
 zeroize = { workspace = true }
@@ -67,6 +66,9 @@ command-fds = { workspace = true, optional = true }
 rustix = { workspace = true, optional = true }
 uds = { workspace = true, optional = true, features = ["mio_1xx"] }
 signal-hook = { workspace = true, optional = true }
+
+[target.'cfg(target_os = "hermit")'.dependencies]
+hermit = { path = "../../hermit-rs/hermit", features = ["libc", "acpi", "dhcpv4", "pci", "smp", "tcp"] }
 
 [build-dependencies]
 anyhow = { workspace = true }

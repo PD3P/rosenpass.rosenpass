@@ -3,7 +3,6 @@
 use anyhow::ensure;
 use std::fs::File;
 use std::io::Read;
-use std::os::unix::fs::OpenOptionsExt;
 use std::{fs::OpenOptions, path::Path};
 
 /// Level of secrecy applied for a file
@@ -43,10 +42,6 @@ pub enum Visibility {
 pub fn fopen_w<P: AsRef<Path>>(path: P, visibility: Visibility) -> std::io::Result<File> {
     let mut options = OpenOptions::new();
     options.create(true).write(true).read(false).truncate(true);
-    match visibility {
-        Visibility::Public => options.mode(0o644),
-        Visibility::Secret => options.mode(0o600),
-    };
     options.open(path)
 }
 

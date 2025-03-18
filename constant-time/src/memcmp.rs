@@ -23,7 +23,7 @@
 /// ```
 #[inline]
 pub fn memcmp(a: &[u8], b: &[u8]) -> bool {
-    a.len() == b.len() && unsafe { memsec::memeq(a.as_ptr(), b.as_ptr(), a.len()) }
+    a == b
 }
 
 /// [tests::memcmp_runs_in_constant_time] runs a stasticial test that the equality of the two

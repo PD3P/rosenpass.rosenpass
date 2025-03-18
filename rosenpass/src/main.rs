@@ -1,5 +1,8 @@
 //! For the main function
 
+#[cfg(target_os = "hermit")]
+use hermit as _;
+
 use clap::CommandFactory;
 use clap::Parser;
 use clap_mangen::roff::{roman, Roff};
@@ -15,10 +18,27 @@ fn print_custom_man_section(section: &str, text: &str, file: &mut std::fs::File)
     let _ = roff.to_writer(file);
 }
 
+macro_rules! include_hermit {
+    ($file:expr $(,)?) => {{        
+        let file_name = ::std::path::Path::new($file).file_name().unwrap();
+        let path = ::std::path::Path::new("/").join(file_name);
+        let mut file = ::std::fs::File::create(path).unwrap();
+        ::std::io::Write::write_all(&mut file, include_bytes!($file)).unwrap();
+    }};
+}
+
 /// Catches errors, prints them through the logger, then exits
 ///
 /// The bulk of the command line logic is handled inside [crate::cli::CliArgs::run].
 pub fn main() {
+    #[cfg(target_os = "hermit")]
+    {
+        include_hermit!("../../hermit-rosenpass-config.toml");
+        include_hermit!("../../hermit-public-key");
+        include_hermit!("../../hermit-secret-key");
+        include_hermit!("../../debian-public-key");
+    }
+
     // parse CLI arguments
     let args = CliArgs::parse();
 

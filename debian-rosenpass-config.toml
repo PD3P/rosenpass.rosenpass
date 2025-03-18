@@ -1,0 +1,9 @@
+public_key = "debian-public-key"
+secret_key = "debian-secret-key"
+listen = []
+verbosity = "Quiet"
+
+[[peers]]
+public_key = "hermit-public-key"
+endpoint = "localhost:9975"
+key_out = "debian-key-out.txt"

@@ -16,13 +16,12 @@ base64ct = { workspace = true }
 anyhow = { workspace = true }
 typenum = { workspace = true }
 static_assertions = { workspace = true }
-rustix = { workspace = true }
 zeroize = { workspace = true }
 zerocopy = { workspace = true }
 thiserror = { workspace = true }
 mio = { workspace = true }
-tempfile = { workspace = true }
 uds = { workspace = true, optional = true, features = ["mio_1xx"] }
+libc = { workspace = true }
 
 
 [features]

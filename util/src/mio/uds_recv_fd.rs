@@ -162,7 +162,7 @@ where
                     // Abort on error and pass to error handler
                     // Note that claim_fd_inplace is responsible for closing this particular
                     // file descriptor if claiming it fails
-                    claim_fd_result = Err(e.into_stdio_err());
+                    claim_fd_result = Err(e);
                     break;
                 }
             }

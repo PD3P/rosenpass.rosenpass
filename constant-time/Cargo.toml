@@ -16,7 +16,6 @@ constant_time_tests = []
 
 [dependencies]
 rosenpass-to = { workspace = true }
-memsec = { workspace = true }
 
 [dev-dependencies]
 rand = { workspace = true }
