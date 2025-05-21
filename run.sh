@@ -4,7 +4,7 @@ set -euo pipefail
 IFS=$'\n\t'
 
 apt update
-apt install -y --no-install-recommends libclang-dev cmake qemu-system-x86
+apt install -y --no-install-recommends libclang-dev cmake qemu-system-x86 clang
 rustup toolchain install nightly --component rust-src
 
 # export CC_ENABLE_DEBUG_OUTPUT=1
